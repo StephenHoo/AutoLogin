@@ -21,6 +21,9 @@ Edge版需要的配置有：
 NOTE：
 
 * 请不要随便升级浏览器，否则需要重新下载webdriver并自行替换
+
    Edge Webdriver 下载地址：https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
+   
    Chrome Webdriver 下载地址：http://chromedriver.storage.googleapis.com/index.html
+   
 * 如果第一次您的密码输入错误，请自行寻找loginData.txt文档并修改成正确的账号密码
