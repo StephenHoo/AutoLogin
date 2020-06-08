@@ -1,4 +1,8 @@
 # AutoLogin
+
+[![license](https://img.shields.io/github/license/StephenHoo/AutoLogin)](https://github.com/StephenHoo/AutoLogin/blob/master/LICENSE)
+[![Release Version](https://img.shields.io/github/release/StephenHoo/AutoLogin)](https://github.com/StephenHoo/AutoLoging/releases)
+
 自动登录东南大学每日打卡报平安
 
 这是一个自动每日报平安打卡的python脚本，基于Selenium库
