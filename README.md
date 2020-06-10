@@ -1,7 +1,7 @@
 # AutoLogin
 
 [![license](https://img.shields.io/github/license/StephenHoo/AutoLogin)](https://github.com/StephenHoo/AutoLogin/blob/master/LICENSE)
-[![Release Version](https://img.shields.io/github/release/StephenHoo/AutoLogin)](https://github.com/StephenHoo/AutoLogin/releases)
+[![Release Version](https://img.shields.io/github/release/StephenHoo/AutoLogin)](https://github.com/StephenHoo/AutoLoging/releases)
 
 自动登录东南大学每日打卡报平安
 
@@ -31,7 +31,7 @@
 
 Chrome版需要的配置有：
 
-* 最新版本的64位Chrome浏览器（必须，版本号为83.0.4103.97）
+* 最新版本的64位Chrome浏览器（必须，版本号为83.0.4103.97，请前往https://www.google.cn/intl/zh-CN/chrome/进行下载）
 
 Edge版需要的配置有：
 
@@ -48,7 +48,7 @@ IE版需要的配置有（IE同样无法后台静默运行，开发计划无限�
 
 ## Warning
 
-* 请不要随便升级浏览器，否则需要重新下载webdriver并自行替换
+* 升级浏览器后如果程序不能运行，则需要重新下载webdriver并自行替换
 
    Edge Webdriver 下载地址：https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
 
