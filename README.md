@@ -31,7 +31,7 @@
 
 Chrome版需要的配置有：
 
-* 最新版本的64位Chrome浏览器（必须，版本号为83.0.4103.97，请前往https://www.google.cn/intl/zh-CN/chrome/进行下载）
+* 最新版本的64位Chrome浏览器（必须，版本号为83.0.4103.97，请前往[Chrome官网](https://www.google.cn/intl/zh-CN/chrome/)进行下载)
 
 Edge版需要的配置有：
 
