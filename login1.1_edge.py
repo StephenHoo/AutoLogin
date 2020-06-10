@@ -88,8 +88,8 @@ if __name__ == "__main__":
     while True:
         try:
             # 登录打卡一次试一试
-            
             browser = webdriver.Edge(executable_path='./msedgedriver.exe')
+            print("------------------浏览器已启动----------------------")
             login(user, pw, browser)
             browser.implicitly_wait(10)
             time.sleep(10)
@@ -98,8 +98,10 @@ if __name__ == "__main__":
             # 的确无新增按钮
             dailyDone = not check("新增", browser)
             if dailyDone is True and check("退出", browser) is True: # 今日已完成打卡
-                sleep_time = (set_hour+24-localtime.tm_hour)*3600 + (set_minite-localtime.tm_min)*60
+                sleep_time = (set_hour+24-time.localtime(time.time()).tm_hour)*3600 + (set_minite-time.localtime(time.time()).tm_min)*60
                 writeLog("下次打卡时间：明天" + str(set_hour) + ':' + str(set_minite) + "，" + "即" + str(sleep_time) + 's后')
+                browser.close()
+                print("------------------浏览器已关闭----------------------")
                 time.sleep(sleep_time)
             elif dailyDone is False: # 今日未完成打卡
                 # 点击报平安
@@ -124,21 +126,20 @@ if __name__ == "__main__":
                                         buttons = browser.find_elements_by_tag_name('button')
                                         button = buttons[-1]
                                         # 提交
-                                        # for button in buttons:
-                                        #     print(button.get_attribute("textContent"))
                                         if button.get_attribute("textContent").find("确定") >= 0:
                                             button.click()
                                             dailyDone = True # 标记已完成打卡
                                             writeLog("打卡成功")
-                                                # break
                                         break
                                 break
                         break
+                browser.close()
+                print("------------------浏览器已关闭----------------------")
                 time.sleep(10) # 昏睡10s 为了防止网络故障未打上卡
-
-        finally:
-            browser.close()
-            time.sleep(300) # 昏睡5min 为了防止网络故障未打上卡
-
-
-
+            else:
+                browser.close()
+                print("------------------网站出现故障----------------------")
+                print("------------------浏览器已关闭----------------------")
+                time.sleep(300) # 昏睡5min 为了防止网络故障未打上卡
+        except Exception as r:
+            print("未知错误 %s" %(r))
