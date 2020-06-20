@@ -29,17 +29,50 @@
 
 ## Configuration
 
-Chrome版需要的配置有：
+**Chrome 版需要的配置有**：
 
-* 最新版本的64位Chrome浏览器（必须，版本号为83.0.4103.97，请前往[Chrome官网](https://www.google.cn/intl/zh-CN/chrome/)进行下载)
+* 最新版本的64位Chrome浏览器（必须，版本号为83.0.4103.97，请前往 [Chrome官网](https://www.google.cn/intl/zh-CN/chrome/) 进行下载)
 
-Edge版需要的配置有：
+**Firefox for Linux 版需要的配置有**（注：该版本无法在 Windows 电脑上使用，我使用的Linux发行版为 Debian，不保证其他发行版也适用）：
+
+* 最新版本的 Firefox 浏览器（必须，版本号为 77.0.1）
+
+    * 可以通过 `firefox --version` 查看 Firefox 版本号
+    * 如果 Firefox 版本不符，请输入下列命令进行升级
+      ```bash
+        sudo apt update
+        sudo apt upgrade
+      ```
+    * 如果您的主机上并未安装 Firefox，请输入下列命令进行安装
+      ```bash
+        sudo apt update
+        sudo apt upgrade
+        sudo apt install firefox
+      ```
+
+* 与最新版 Firefox 浏览器对应的 geckodriver 驱动。如果您遇到了驱动与浏览器版本不符的情况，除了升级浏览器外，还应该升级驱动
+
+    * release 中自带了与上述浏览器版本号对应的驱动
+    * 如果需要升级驱动，请自行下载 [geckodriver](https://www.google.cn/intl/zh-CN/chrome/) 最新版，一般选择 64 位系统的安装包
+
+* 上述两点都确定之后，可以使用下列命令运行程序（以 1.1 版本为例）
+
+  ```bash
+  tar zxvf login1.1_firefox_for_linux.tar.gz    # 解压压缩文件
+  cd login1.1_firefox_for_linux                 # 跳转到目标目录
+  ./login1.1_firefox_for_linux                  # 运行程序
+
+  # 如果您是远程ssh到目标 Linux 主机的，建议使用 nohup 挂起，但是第一次运行程序时不可以挂起，因为要输入账号密码
+  # nohup ./login1.1_firefox_for_linux &
+  ```
+
+**Edge 版需要的配置有**：
 
 * 最新版Chromium内核的64位Edge浏览器（必须，版本号为83.0.478.45）
 * 请务必确认Edge浏览器的缩放比例为100%
 * Edge浏览器无法后台静默运行，也无法隐藏log，因而为了极致使用体验还是建议使用Chrome
 
-IE版需要的配置有（IE同样无法后台静默运行，开发计划无限搁浅）：
+IE 版需要的配置有（IE同样无法后台静默运行，开发计划无限搁浅）：
 
 * 最新版IE浏览器（必须）
 * 请务必保证IE浏览器的缩放比例为100%，工具-缩放请务必选择100%，建议提前打开IE浏览器查看缩放比例
@@ -59,3 +92,4 @@ IE版需要的配置有（IE同样无法后台静默运行，开发计划无限�
 * 如果您遇到下面提示：`未知错误 Message: unkown error: cannot find Chrome binary`，则表示您的Chrome浏览器未安装或者安装位置并不是系统默认位置：`C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`
 
     请找到 loginData.txt 文件，并在文件的第三行（前两行分别是您账号和密码）补上您的 Chrome 的安装位置（如果是系统默认位置则不需要添加），格式一般为：`X:\Google\Chrome\Application\chrome.exe`，其中X为盘符
+
