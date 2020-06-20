@@ -29,11 +29,11 @@
 
 ## Configuration
 
-**Chrome 版需要的配置有**：
+### Chrome 版需要的配置有：
 
 * 最新版本的64位Chrome浏览器（必须，版本号为83.0.4103.97，请前往 [Chrome官网](https://www.google.cn/intl/zh-CN/chrome/) 进行下载)
 
-**Firefox for Linux 版需要的配置有**（注：该版本无法在 Windows 电脑上使用，我使用的Linux发行版为 Debian，不保证其他发行版也适用）：
+### Firefox for Linux 版需要的配置有（注：该版本无法在 Windows 电脑上使用，我使用的Linux发行版为 Debian，不保证其他发行版也适用）：
 
 * 最新版本的 Firefox 浏览器（必须，版本号为 77.0.1）
 
@@ -66,13 +66,13 @@
   # nohup ./login1.1_firefox_for_linux &
   ```
 
-**Edge 版需要的配置有**：
+### Edge 版需要的配置有：
 
 * 最新版Chromium内核的64位Edge浏览器（必须，版本号为83.0.478.45）
 * 请务必确认Edge浏览器的缩放比例为100%
 * Edge浏览器无法后台静默运行，也无法隐藏log，因而为了极致使用体验还是建议使用Chrome
 
-IE 版需要的配置有（IE同样无法后台静默运行，开发计划无限搁浅）：
+### IE 版需要的配置有（IE同样无法后台静默运行，开发计划无限搁浅）：
 
 * 最新版IE浏览器（必须）
 * 请务必保证IE浏览器的缩放比例为100%，工具-缩放请务必选择100%，建议提前打开IE浏览器查看缩放比例
