@@ -11,6 +11,8 @@ import random
 
 # 加启动配置 禁用日志log
 chrome_options = Options()
+chrome_options.add_argument('–no-sandbox')# “–no - sandbox”参数是让Chrome在root权限下跑
+chrome_options.add_argument('–disable-dev-shm-usage')
 chrome_options.add_experimental_option('excludeSwitches', ['enable-automation'])
 chrome_options.add_argument('--start-maximized')#最大化
 chrome_options.add_argument('--incognito')#无痕隐身模式
@@ -18,6 +20,7 @@ chrome_options.add_argument("disable-cache")#禁用缓存
 chrome_options.add_argument('log-level=3')
 chrome_options.add_argument('disable-infobars')
 chrome_options.add_argument('--headless')
+
 url = "https://newids.seu.edu.cn/authserver/login?service=http://ehall.seu.edu.cn/qljfwapp2/sys/lwReportEpidemicSeu/*default/index.do"
 dailyDone = False # 今日是否已经打卡
 
@@ -33,22 +36,29 @@ def writeLog(text):
 
 def enterUserPW():
     # 创建账号密码文件，以后都不用重复输入
+    # 1.1版本之后更新可以读取 chrome.exe 的位置，防止用户Chrome浏览器未安装到默认位置导致的程序无法执行
     try:
         with open("loginData.txt", mode='r', encoding='utf-8') as f:
             # 去掉换行符
-            user = f.readline().strip()
-            pw = f.readline().strip()
+            lines = f.readlines()
+            user = lines[0].strip()
+            pw = lines[1].strip()
+            if len(lines) > 2:
+                loc = lines[2].strip()
+            else:
+                loc = ""
             f.close()
     except FileNotFoundError:
         print("Welcome to AUTO DO THE F***ING DAILY JOB, copyright belongs to S.H.")
         with open("loginData.txt", mode='w', encoding='utf-8') as f:
             user = input('Please Enter Your Username: ')
             pw = input('Then Please Enter Your Password: ')
+            loc = ""
             f.write(user + '\n')
             f.write(pw + '\n')
             f.close()
 
-    return user, pw
+    return user, pw, loc
     
 
 def login(user, pw, browser):
@@ -76,7 +86,11 @@ def check(text, browser):
     return False
 
 if __name__ == "__main__":
-    user, pw = enterUserPW()
+    user, pw, browser_loc = enterUserPW()
+    # 判断是否写入非默认安装位置的 Chrome 位置
+    if len(browser_loc) > 10:
+        chrome_options.binary_location = browser_loc
+    
     localtime = time.localtime(time.time())
     set_minite = localtime.tm_min # 首次登陆的分钟时刻，代表以后每次在此分钟时刻打卡
     set_hour = localtime.tm_hour # 首次登陆的时钟时刻，代表以后每次在此时钟时刻打卡
