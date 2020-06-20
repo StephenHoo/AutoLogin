@@ -50,9 +50,12 @@ IE版需要的配置有（IE同样无法后台静默运行，开发计划无限�
 
 * 升级浏览器后如果程序不能运行，则需要重新下载webdriver并自行替换
 
-   Edge Webdriver 下载地址：https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
+    Edge Webdriver 下载地址：https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/
 
-   Chrome Webdriver 下载地址：http://chromedriver.storage.googleapis.com/index.html
+    Chrome Webdriver 下载地址：http://chromedriver.storage.googleapis.com/index.html
 
 * 如果第一次您的密码输入错误，请自行寻找loginData.txt文档并修改成正确的账号密码
 
+* 如果您遇到下面提示：`未知错误 Message: unkown error: cannot find Chrome binary`，则表示您的Chrome浏览器未安装或者安装位置并不是系统默认位置：`C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`
+
+    请找到 loginData.txt 文件，并在文件的第三行（前两行分别是您账号和密码）补上您的 Chrome 的安装位置（如果是系统默认位置则不需要添加），格式一般为：`X:\Google\Chrome\Application\chrome.exe`，其中X为盘符
