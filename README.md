@@ -53,7 +53,7 @@
 * 与最新版 Firefox 浏览器对应的 geckodriver 驱动。如果您遇到了驱动与浏览器版本不符的情况，除了升级浏览器外，还应该升级驱动
 
     * release 中自带了与上述浏览器版本号对应的驱动（我还是很贴心的）
-    * 如果需要升级驱动，请自行下载 [geckodriver](https://www.google.cn/intl/zh-CN/chrome/) 最新版，一般选择 64 位系统的安装包，下载完成后替换掉 release 中自带的 geckodriver 即可
+    * 如果需要升级驱动，请自行下载 [geckodriver](https://github.com/mozilla/geckodriver/releases) 最新版，一般选择 64 位系统的安装包，下载完成后替换掉 release 中自带的 geckodriver 即可
 
 * 上述两点都确定之后，可以使用下列命令运行程序（以 1.1 版本为例）
 
