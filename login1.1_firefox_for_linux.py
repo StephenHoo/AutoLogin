@@ -100,7 +100,7 @@ if __name__ == "__main__":
             if dailyDone is True and check("退出", browser) is True: # 今日已完成打卡
                 sleep_time = (set_hour+24-time.localtime(time.time()).tm_hour)*3600 + (set_minite-time.localtime(time.time()).tm_min)*60
                 writeLog("下次打卡时间：明天" + str(set_hour) + ':' + str(set_minite) + "，" + "即" + str(sleep_time) + 's后')
-                browser.close()
+                browser.quit()
                 print("------------------浏览器已关闭----------------------")
                 time.sleep(sleep_time)
             elif dailyDone is False: # 今日未完成打卡
@@ -133,11 +133,11 @@ if __name__ == "__main__":
                                         break
                                 break
                         break
-                browser.close()
+                browser.quit()
                 print("------------------浏览器已关闭----------------------")
                 time.sleep(10) # 昏睡10s 为了防止网络故障未打上卡
             else:
-                browser.close()
+                browser.quit()
                 print("------------------网站出现故障----------------------")
                 print("------------------浏览器已关闭----------------------")
                 time.sleep(300) # 昏睡5min 为了防止网络故障未打上卡
