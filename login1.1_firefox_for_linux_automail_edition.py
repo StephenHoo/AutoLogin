@@ -1,3 +1,9 @@
+# 每次打卡成功后通过邮件服务向指定的邮箱发送打卡成功邮件，避免手工登录查询自动打卡是否成功。
+# 目前发件邮箱支持QQ（需开启STMP服务，获取授权码，可参考https://jingyan.baidu.com/article/6079ad0eb14aaa28fe86db5a.html），收件邮箱不限。
+#
+# 首次输入要输入用户名、密码、发件邮箱、授权码、收件邮箱，保存在logData.txt。
+# Ubuntu18.04亲测可用
+
 from selenium import webdriver
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By  # 按照什么方式查找，By.ID,By.CSS_SELECTOR
