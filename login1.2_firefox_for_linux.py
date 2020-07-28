@@ -118,6 +118,23 @@ if __name__ == "__main__":
                                 i.click()
                                 i.send_keys(str(random.randint(365,370)/10.0))
 
+                                # 1.2版本新增，“24h内，密切接触人员有无发热或呼吸道症状”选项填写
+                                # 选择该选项框
+                                js="document.querySelector(\"#app > div > div > div:nth-child(2) > div > div:nth-child(4) > div > div.mint-cell-group-content.mint-hairline--top-bottom.mt-bg-white.mt-bColor-after-grey-lv5 > div:nth-child(51) > div > a\").click();"
+                                browser.execute_script(js)
+                                time.sleep(1)
+                                # 反复横跳，先选择其他按钮
+                                js="document.querySelector(\"#app > div > div > div:nth-child(2) > div > div:nth-child(4) > div > div.mint-cell-group-content.mint-hairline--top-bottom.mt-bg-white.mt-bColor-after-grey-lv5 > div:nth-child(51) > div > div.mint-popup.mt-bg-white.mint-popup-bottom > div > div.mint-picker__columns > div > ul > li:nth-child(2)\").click()"
+                                browser.execute_script(js)
+                                time.sleep(1)
+                                # 选择“无”
+                                js="document.querySelector(\"#app > div > div > div:nth-child(2) > div > div:nth-child(4) > div > div.mint-cell-group-content.mint-hairline--top-bottom.mt-bg-white.mt-bColor-after-grey-lv5 > div:nth-child(51) > div > div.mint-popup.mt-bg-white.mint-popup-bottom > div > div.mint-picker__columns > div > ul > li:nth-child(1)\").click();"
+                                browser.execute_script(js)
+                                time.sleep(1)
+                                # 点击“确定”
+                                js="document.querySelector(\"#app > div > div > div:nth-child(2) > div > div:nth-child(4) > div > div.mint-cell-group-content.mint-hairline--top-bottom.mt-bg-white.mt-bColor-after-grey-lv5 > div:nth-child(51) > div > div.mint-popup.mt-bg-white.mint-popup-bottom > div > div.mint-picker__toolbar.mt-bColor-grey-lv6 > div.mint-picker__confirm.mt-color-theme\").click()"
+                                browser.execute_script(js)
+
                                 #确认并提交
                                 buttons = browser.find_elements_by_tag_name('button')
                                 for button in buttons:
