@@ -17,9 +17,11 @@
 
 ## Usage
 
-请直接点击exe文件运行程序，第一次运行需要输入您的一卡通号和密码（这完全保存在您的计算机上，并不会泄露给我或其他人）。
+前往 [releases](https://github.com/StephenHoo/AutoLogin/releases) 下载最新版本安装包并解压。
 
-如果您每晚都需要关闭计算机，建议将exe文件的快捷方式添加到开机启动目录，这样在您第二天打开计算机的时候便可以自动运行程序。
+请直接点击exe文件运行程序，第一次运行需要输入您的**一卡通号**和**密码**（这完全保存在您的计算机上，并不会泄露给我或其他人）。
+
+如果您每晚都需要关闭计算机，建议将exe文件的**快捷方式**添加到开机启动目录，这样在您第二天打开计算机的时候便可以自动运行程序。
 
 其主要实现的功能有：
 
@@ -27,11 +29,26 @@
 * 每日10点钟之前自动打卡，具体打卡时间与第一次登录时间有关
 * 打卡成功后会在log中记录打卡的时间方便查看，如果愿意的话可以接入微信报备（可以但没必要，鉴于该功能并不一定适用所有人，如果您需要请单独联系开发者）
 
+**1.3 版本更新，在打卡之后可以自动开始第二日入校申请**
+
+* 默认兼容1.2版本，只有将 loginData.json 文件（loginData.json 文件会在程序第一次运行之后自动生成）中的 destination 手动改为改为具体的"所到楼宇"才会激活第二日入校申请（此时需要重新启动程序配置才会生效）
+参考格式：{"username": "1111111", "password": "ABABABABABAB", "loc": "", "destination": "教务处380"}
+* 1.3版本目前默认的”申请理由“为”到办公室科研“，如需要选择其他选项，请手动更改源码或等待后续更新（咕咕咕）
+* 1.3版本默认的通行开始时间为8：31，结束时间为20：31，如需要选择其他选项，请手动更改源码或等待后续更新（咕咕咕）
+* 1.3版本测试的通行区域为”四牌楼校区“，不保证其他校区的同学也可以正常使用
+* 1.3版本目前仅有 Chrome 版，如使用的是其他浏览器，请手动更改源码或等待后续更新（咕咕咕）
+
+程序正常运行的界面截图：
+
+![dbiQqH.png](https://s1.ax1x.com/2020/08/30/dbiQqH.png)
+
+
 ## Configuration
 
 ### Chrome 版需要的配置有：
 
-* 最新版本的64位Chrome浏览器（必须，版本号为83.0.4103.97，请前往 [Chrome官网](https://www.google.cn/intl/zh-CN/chrome/) 进行下载)
+* 最新版本的64位 Chrome 浏览器（必须，版本号为 83.0.4103.97，请前往 [Chrome官网](https://www.google.cn/intl/zh-CN/chrome/) 进行下载)
+* **最新版本 Chrome 浏览器已经不再是 83 版本，所以如果程序不能正常运行请重新下载 [webdriver](http://chromedriver.storage.googleapis.com/index.html) 并自行替换**
 
 ### Firefox for Linux 版需要的配置有（注：该版本无法在 Windows 电脑上使用，我使用的Linux发行版为 Debian，不保证其他发行版也适用）：
 
@@ -79,8 +96,6 @@ TO DO LIST：
 3. 邮件提醒
 4. 数据库存储
 
-
-
 ### Edge 版需要的配置有：
 
 * 最新版Chromium内核的64位Edge浏览器（必须，版本号为83.0.478.45）
@@ -102,9 +117,11 @@ TO DO LIST：
 
     Chrome Webdriver 下载地址：http://chromedriver.storage.googleapis.com/index.html
 
-* 如果第一次您的密码输入错误，请自行寻找loginData.txt文档并修改成正确的账号密码
+* 如果第一次您的密码输入错误，请自行寻找loginData.txt（v1.2及以前） or loginData.json（v1.3及以后）文档并修改成正确的账号密码
 
 * 如果您遇到下面提示：`未知错误 Message: unkown error: cannot find Chrome binary`，则表示您的Chrome浏览器未安装或者安装位置并不是系统默认位置：`C:\Program Files (x86)\Google\Chrome\Application\chrome.exe`
 
-    请找到 loginData.txt 文件，并在文件的第三行（前两行分别是您账号和密码）补上您的 Chrome 的安装位置（如果是系统默认位置则不需要添加），格式一般为：`X:\Google\Chrome\Application\chrome.exe`，其中X为盘符
+    如果是 v1.2 及以前版本，请找到 loginData.txt 文件，并在文件的第三行（前两行分别是您账号和密码）补上您的 Chrome 的安装位置（如果是系统默认位置则不需要添加），格式一般为：`X:\Google\Chrome\Application\chrome.exe`，其中X为盘符
+    
+    如果是 v1.3 及以后版本，请找到 loginData.json 文件，并在 "loc" 后添加您的 Chrome 的安装位置，此时正确的配置文件格式一般为：{"username": "1111111", "password": "ABABABABABAB", "loc": "X:\Google\Chrome\Application\chrome.exe", "destination": "教务处380"}
 
