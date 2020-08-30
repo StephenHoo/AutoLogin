@@ -1,7 +1,7 @@
 # AutoLogin
 
 [![license](https://img.shields.io/github/license/StephenHoo/AutoLogin)](https://github.com/StephenHoo/AutoLogin/blob/master/LICENSE)
-[![Release Version](https://img.shields.io/github/release/StephenHoo/AutoLogin)](https://github.com/StephenHoo/AutoLoging/releases)
+[![Release Version](https://img.shields.io/github/release/StephenHoo/AutoLogin)](https://github.com/StephenHoo/AutoLogin/releases)
 
 自动登录东南大学每日打卡报平安
 
