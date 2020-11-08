@@ -5,8 +5,7 @@ from selenium.webdriver.common.keys import Keys #键盘按键操作
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait #等待页面加载某些元素
 from selenium.webdriver.chrome.options import Options
-import time
-import random
+import time, random, re, requests, winreg, zipfile
 
 
 # 加启动配置 禁用日志log
@@ -85,6 +84,34 @@ def check(text, browser):
             return True
     return False
 
+def unzip_single(src_file, dest_dir):
+    zf = zipfile.ZipFile(src_file)
+    zf.extractall(path=dest_dir)
+    zf.close()
+
+def update_drv_version():
+    url = 'http://npm.taobao.org/mirrors/chromedriver/'
+    rep = requests.get(url).text
+    real_driver_version = {}
+    result = re.compile(r'\d.*?/</a>.*?Z').findall(rep)
+
+    for i in result:
+        version = re.compile(r'.*?/').findall(i)[0]
+        print(version.split('.')[0])
+        real_driver_version[version.split('.')[0]] = version
+
+    ChromeBroserVersion = winreg.QueryValueEx(winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,'SOFTWARE\\WOW6432Node\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Google Chrome'),'DisplayVersion')[0]
+    ChromeVersion = ChromeBroserVersion.split('.')[0]
+
+    if int(ChromeVersion) < 70:
+        print("really old chrome browser, please update your browser to 70 or later!")
+    print("downloading new chromedriver...\n")
+    download_url = url + real_driver_version[ChromeVersion] + 'chromedriver_win32.zip'
+    file = requests.get(download_url)
+    with open("chromedriver_win32.zip", 'wb') as zip_file:
+        zip_file.write(file.content)
+    unzip_single('chromedriver_win32.zip','')
+
 if __name__ == "__main__":
     user, pw, browser_loc = enterUserPW()
     # 判断是否写入非默认安装位置的 Chrome 位置
@@ -102,7 +129,12 @@ if __name__ == "__main__":
     while True:
         try:
             # 登录打卡一次试一试
-            browser = webdriver.Chrome('./chromedriver',options=chrome_options)
+            try:
+                browser = webdriver.Chrome('./chromedriver',options=chrome_options)
+            except:
+                print("Old chromedriver detected, updating...\n")
+                update_drv_version()
+                browser = webdriver.Chrome('./chromedriver',options=chrome_options)
             print("------------------浏览器已启动----------------------")
             login(user, pw, browser)
             browser.implicitly_wait(10)
@@ -177,4 +209,3 @@ if __name__ == "__main__":
                 time.sleep(300) # 昏睡5min 为了防止网络故障未打上卡
         except Exception as r:
             print("未知错误 %s" %(r))
-
