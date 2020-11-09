@@ -7,6 +7,8 @@
 
 这是一个自动每日报平安打卡的python脚本，基于Selenium库
 
+团队打卡版本可以请访问 [typex.ltd](https://www.typex.ltd)，之前承诺的功能应该都做到了。
+
 ## Compile
 
 如果您想自己编译python代码，则需要：
