@@ -7,7 +7,7 @@
 
 这是一个自动每日报平安打卡的python脚本，基于Selenium库
 
-团队打卡版本可以请访问 [typex.ltd](https://www.typex.ltd)，之前承诺的功能应该都做到了。
+团队打卡版本可以访问 [typex.ltd](https://www.typex.ltd)，之前承诺的功能应该都做到了。
 
 ## Compile
 
